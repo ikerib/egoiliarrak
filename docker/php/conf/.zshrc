@@ -1,12 +1,12 @@
 
 export ZSH="/root/.oh-my-zsh"
 
-ZSH_THEME="kphoen"
+ZSH_THEME="random"
 DISABLE_LS_COLORS="false"
 DISABLE_AUTO_UPDATE=false
 
 
-plugins=(git command-not-found colorize github history npm symfony)
+plugins=(colorize history symfony)
 
 source $ZSH/oh-my-zsh.sh
 
