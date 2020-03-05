@@ -28,7 +28,7 @@ services:
             - DATABASE_URL=mysql://${DOCKER_MYSQL_USER}:${DOCKER_MYSQL_ROOT_PASSWORD}@mysql:3306/${DOCKER_MYSQL_DATABASE}?serverVersion=5.7
         volumes:
             - '.:/usr/src/app'
-
+            - './docker-data/data-php/.zsh_history:/root/.zsh_history'
 
     nginx:
         image: nginx:1.15.3-alpine

@@ -12,6 +12,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 # ALIAS
+alias cdw="cd /usr/src/app"
 alias tail="grc tail"
 alias cpt="vendor/bin/codecept"
 alias kill="kill -9"

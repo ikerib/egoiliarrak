@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
     vim \
     unzip locales openssh-client \
     zlib1g-dev libonig-dev libpng-dev \
+    grc \
     && locale-gen es_ES.UTF-8 \
     && echo "LC_ALL=es_ES.UTF-8" >> /etc/environment \
     && echo "LANG=es_ES.UTF-8" >> /etc/environment \
