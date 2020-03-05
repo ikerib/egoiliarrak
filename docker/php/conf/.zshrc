@@ -1,7 +1,7 @@
 
 export ZSH="/root/.oh-my-zsh"
 
-ZSH_THEME="agnoster"
+ZSH_THEME="kphoen"
 DISABLE_LS_COLORS="false"
 DISABLE_AUTO_UPDATE=false
 

@@ -96,3 +96,8 @@ deploy.php
 /docker-data
 .idea
 docker-compose.override.yml
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+/phpcs.xml
+###< squizlabs/php_codesniffer ###
