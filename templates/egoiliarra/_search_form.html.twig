@@ -1,0 +1,25 @@
+{{ form_start(searchForm) }}
+
+    <div class="row jumbotron">
+        <div class="col-md-6">
+            {{ form_row(searchForm.name) }}
+            {{ form_row(searchForm.matrikula) }}
+            {{ form_row(searchForm.marka) }}
+            {{ form_row(searchForm.modelo) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(searchForm.dni) }}
+            {{ form_row(searchForm.telefono1) }}
+            {{ form_row(searchForm.helbidea) }}
+            {{ form_row(searchForm.barrutia) }}
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="col-md-12 text-center">
+            <button class="btn btn-primary"><i class="fas fa-search"></i> {{ button_label|default('Bilatu') }}</button>
+        </div>
+
+    </div>
+
+
+
+{{ form_end(searchForm) }}

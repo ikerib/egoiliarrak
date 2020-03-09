@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Barrutia{% endblock %}
+
+{% block body %}
+    <h1>Edit Barrutia</h1>
+
+    {{ include('barrutia/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('barrutia_index') }}">back to list</a>
+
+    {{ include('barrutia/_delete_form.html.twig') }}
+{% endblock %}

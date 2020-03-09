@@ -19,6 +19,21 @@ class EgoiliarraRepository extends ServiceEntityRepository
         parent::__construct($registry, Egoiliarra::class);
     }
 
+    public function getBarrutiak()
+    {
+        $qb = $this->createQueryBuilder('e');
+        $qb->groupBy('e.name')
+            ;
+
+        return $qb->getQuery()->getResult();
+    }
+
+
+    public function search($f)
+    {
+        $qb = $this->createQueryBuilder('e');
+        $qb->andWhere('e.name LIKE');
+    }
     // /**
     //  * @return Egoiliarra[] Returns an array of Egoiliarra objects
     //  */

@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Egoiliarra{% endblock %}
+
+{% block body %}
+    <h1>Egoiliarra</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ egoiliarra.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ egoiliarra.name }}</td>
+            </tr>
+            <tr>
+                <th>Matrikula</th>
+                <td>{{ egoiliarra.matrikula }}</td>
+            </tr>
+            <tr>
+                <th>Marka</th>
+                <td>{{ egoiliarra.marka }}</td>
+            </tr>
+            <tr>
+                <th>Modelo</th>
+                <td>{{ egoiliarra.modelo }}</td>
+            </tr>
+            <tr>
+                <th>Dni</th>
+                <td>{{ egoiliarra.dni }}</td>
+            </tr>
+            <tr>
+                <th>Telefono1</th>
+                <td>{{ egoiliarra.telefono1 }}</td>
+            </tr>
+            <tr>
+                <th>Telefono2</th>
+                <td>{{ egoiliarra.telefono2 }}</td>
+            </tr>
+            <tr>
+                <th>Helbidea</th>
+                <td>{{ egoiliarra.helbidea }}</td>
+            </tr>
+            <tr>
+                <th>Herria</th>
+                <td>{{ egoiliarra.herria }}</td>
+            </tr>
+            <tr>
+                <th>Enpresa</th>
+                <td>{{ egoiliarra.enpresa }}</td>
+            </tr>
+            <tr>
+                <th>Zaharra</th>
+                <td>{{ egoiliarra.zaharra }}</td>
+            </tr>
+            <tr>
+                <th>Ezindua</th>
+                <td>{{ egoiliarra.ezindua }}</td>
+            </tr>
+            <tr>
+                <th>Zenbakia</th>
+                <td>{{ egoiliarra.zenbakia }}</td>
+            </tr>
+            <tr>
+                <th>Helbidea2</th>
+                <td>{{ egoiliarra.helbidea2 }}</td>
+            </tr>
+            <tr>
+                <th>ErregistroZenbakia</th>
+                <td>{{ egoiliarra.ErregistroZenbakia }}</td>
+            </tr>
+            <tr>
+                <th>AlKodea</th>
+                <td>{{ egoiliarra.AlKodea }}</td>
+            </tr>
+            <tr>
+                <th>Barrutia</th>
+                <td>{{ egoiliarra.barrutia }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('egoiliarra_index') }}">back to list</a>
+
+    <a href="{{ path('egoiliarra_edit', {'id': egoiliarra.id}) }}">edit</a>
+
+    {{ include('egoiliarra/_delete_form.html.twig') }}
+{% endblock %}

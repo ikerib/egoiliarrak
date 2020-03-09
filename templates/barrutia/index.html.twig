@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Barrutia index{% endblock %}
+
+{% block body %}
+    <h1>Barrutia index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for barrutium in barrutias %}
+            <tr>
+                <td>{{ barrutium.id }}</td>
+                <td>{{ barrutium.name }}</td>
+                <td>
+                    <a href="{{ path('barrutia_show', {'id': barrutium.id}) }}">show</a>
+                    <a href="{{ path('barrutia_edit', {'id': barrutium.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('barrutia_new') }}">Create new</a>
+{% endblock %}

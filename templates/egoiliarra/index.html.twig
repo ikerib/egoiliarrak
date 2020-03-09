@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Egoiliarra index{% endblock %}
+
+{% block body %}
+
+    <h1>Zerrenda</h1>
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-5">
+            {% include('egoiliarra/_search_form.html.twig') %}
+        </div>
+        <div class="col-md-3"></div>
+
+        <div class="col-md-1 text-right">
+            <a class="btn btn-primary" href="{{ path('egoiliarra_new') }}">Sortu berria</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-sm table-bordered  table-responsive-xl table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Matrikula</th>
+                    <th>Marka</th>
+                    <th>Modelo</th>
+                    <th>Telefonoak</th>
+                    <th>AlKodea</th>
+                    <th>Barrutia</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for egoiliarra in egoiliarras %}
+                    <tr>
+                        <td>{{ egoiliarra.name }}</td>
+                        <td>{{ egoiliarra.matrikula }}</td>
+                        <td>{{ egoiliarra.marka }}</td>
+                        <td>{{ egoiliarra.modelo }}</td>
+                        <td>{{ egoiliarra.telefono1 }} {{ egoiliarra.telefono2 }}</td>
+                        <td>{{ egoiliarra.AlKodea }}</td>
+                        <td>{{ egoiliarra.barrutia }}</td>
+                        <td>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a class="btn btn-sm btn-primary" href="{{ path('egoiliarra_show', {'id': egoiliarra.id}) }}">Ikusi</a>
+                                </li>
+
+                                <li class="list-inline-item">
+                                    <a class="btn btn-sm btn-primary" href="{{ path('egoiliarra_edit', {'id': egoiliarra.id}) }}">Aldatu</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="19">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+{% endblock %}

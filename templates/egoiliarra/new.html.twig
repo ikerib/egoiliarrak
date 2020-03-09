@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Egoiliarra{% endblock %}
+
+{% block body %}
+    <h1>Create new Egoiliarra</h1>
+
+    {{ include('egoiliarra/_form.html.twig') }}
+
+    <a href="{{ path('egoiliarra_index') }}">back to list</a>
+{% endblock %}

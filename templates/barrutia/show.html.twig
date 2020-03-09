@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Barrutia{% endblock %}
+
+{% block body %}
+    <h1>Barrutia</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ barrutium.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ barrutium.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('barrutia_index') }}">back to list</a>
+
+    <a href="{{ path('barrutia_edit', {'id': barrutium.id}) }}">edit</a>
+
+    {{ include('barrutia/_delete_form.html.twig') }}
+{% endblock %}
