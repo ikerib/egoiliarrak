@@ -15,7 +15,7 @@ class EgoiliarraSearchFormType extends AbstractType
         $builder
             ->add('name', \Symfony\Component\Form\Extension\Core\Type\TextType::class, [
                 'required' => false,
-                'label' => 'Izen Abizenak'
+                'label' => 'Deiturak'
             ])
             ->add('matrikula', \Symfony\Component\Form\Extension\Core\Type\TextType::class, [
                 'required' => false,
