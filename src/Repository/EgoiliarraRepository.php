@@ -29,10 +29,45 @@ class EgoiliarraRepository extends ServiceEntityRepository
     }
 
 
-    public function search($f)
+    public function search($data)
     {
+
         $qb = $this->createQueryBuilder('e');
-        $qb->andWhere('e.name LIKE');
+
+        if ($data->getBarrutia()) {
+            $qb->andWhere('e.barrutia=:barrutiaid')->setParameter('barrutiaid', $data->getBarrutia()->getId());
+        }
+
+        if ($data->getName()) {
+            $qb->andWhere('e.name like :izena')->setParameter('izena', '%' . $data->getName() . '%');
+        }
+
+        if ($data->getMatrikula()) {
+            $qb->andWhere('e.matrikula like :matrikula')->setParameter('matrikula', '%' . $data->getMatrikula() . '%');
+        }
+
+        if ($data->getMarka()) {
+            $qb->andWhere('e.marka like :marka')->setParameter('marka', '%' . $data->getMarka() . '%');
+        }
+
+        if ($data->getModelo()) {
+            $qb->andWhere('e.modelo like :modelo')->setParameter('modelo', '%' . $data->getModelo() . '%');
+        }
+
+        if ($data->getDni()) {
+            $qb->andWhere('e.dni like :nan')->setParameter('nan', '%' . $data->getDni() . '%');
+        }
+
+        if ($data->getTelefono1()) {
+            $qb->andWhere('e.telefono1 like :telf')->setParameter('telf', '%' . $data->getTelefono1() . '%');
+        }
+
+        if ($data->getHelbidea()) {
+            $qb->andWhere('e.helbidea like :helbide')->setParameter('helbide', '%' . $data->getHelbidea() . '%');
+        }
+
+
+        return $qb->getQuery()->getResult();
     }
     // /**
     //  * @return Egoiliarra[] Returns an array of Egoiliarra objects

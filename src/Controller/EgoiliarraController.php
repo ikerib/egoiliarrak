@@ -37,7 +37,7 @@ class EgoiliarraController extends AbstractController
         $egoiliarrak = $egoiliarraRepository->findAll();
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
             $data = $searchForm->getData();
-            
+            $egoiliarrak =$egoiliarraRepository->search($data);
         }
 
 
