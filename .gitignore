@@ -94,6 +94,7 @@ yarn-error.log
 !/deploy.php
 deploy.php
 /docker-data
+/docker/data
 .idea
 docker-compose.override.yml
 

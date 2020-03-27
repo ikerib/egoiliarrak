@@ -17,6 +17,9 @@ class BarrutiaController extends AbstractController
 {
     /**
      * @Route("/", name="barrutia_index", methods={"GET"})
+     * @param BarrutiaRepository $barrutiaRepository
+     *
+     * @return Response
      */
     public function index(BarrutiaRepository $barrutiaRepository): Response
     {
@@ -27,6 +30,9 @@ class BarrutiaController extends AbstractController
 
     /**
      * @Route("/new", name="barrutia_new", methods={"GET","POST"})
+     * @param Request $request
+     *
+     * @return Response
      */
     public function new(Request $request): Response
     {

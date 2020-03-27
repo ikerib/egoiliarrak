@@ -1,11 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Barrutia{% endblock %}
+{% block title %}Barruti berria{% endblock %}
 
 {% block body %}
-    <h1>Create new Barrutia</h1>
 
-    {{ include('barrutia/_form.html.twig') }}
+    <div class="row">
+        <div class="col-md-10">
+            <h1>Barruti berria</h1>
+        </div>
+        <div class="col-md-2 text-right">
+            <a class="btn btn-primary" href="{{ path('barrutia_index') }}"><i class="fas fa-arrow-circle-left"></i> Itzuli zerrendara</a>
+        </div>
+    </div>
 
-    <a href="{{ path('barrutia_index') }}">back to list</a>
+    <div class="row">&nbsp;</div>
+
+    <div class="row">
+        <div class="col-md-12">
+            {{ include('barrutia/_form.html.twig') }}
+        </div>
+    </div>
+
+
 {% endblock %}

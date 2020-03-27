@@ -46,11 +46,11 @@ class FormLoginAuthenticator extends AbstractFormLoginAuthenticator
 
     public function __construct(UserRepository $userRepository, RouterInterface $router, CsrfTokenManagerInterface $csrfTokenManager, PasaiaLdapService $pasaiaLdapSrv, EntityManagerInterface $em)
     {
-        $this->userRepository = $userRepository;
-        $this->router = $router;
+        $this->userRepository   = $userRepository;
+        $this->router           = $router;
         $this->csrfTokenManager = $csrfTokenManager;
-        $this->pasaiaLdapSrv = $pasaiaLdapSrv;
-        $this->em = $em;
+        $this->pasaiaLdapSrv    = $pasaiaLdapSrv;
+        $this->em               = $em;
     }
 
     public function supports(Request $request): bool
@@ -61,49 +61,49 @@ class FormLoginAuthenticator extends AbstractFormLoginAuthenticator
     public function getCredentials(Request $request)
     {
         $credentials = [
-            '_username' => $request->request->get('_username'),
-            '_password' => $request->request->get('_password'),
+            '_username'   => $request->request->get('_username'),
+            '_password'   => $request->request->get('_password'),
             '_csrf_token' => $request->request->get('_csrf_token'),
         ];
 
-        $request->getSession()->set(Security::LAST_USERNAME, $credentials['_username']);
+        $request->getSession()->set(Security::LAST_USERNAME, $credentials[ '_username' ]);
 
         return $credentials;
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        $token = new CsrfToken('authenticate', $credentials['_csrf_token']);
+        $token = new CsrfToken('authenticate', $credentials[ '_csrf_token' ]);
         if (!$this->csrfTokenManager->isTokenValid($token)) {
             throw new InvalidCsrfTokenException('Token CSRF invalido');
         }
 
-        $dbUser = $this->userRepository->findOneBy(['username' => $credentials['_username']]);
+        $dbUser = $this->userRepository->findOneBy([ 'username' => $credentials[ '_username' ] ]);
 
         if (!$dbUser) {
             // User is not present in the Database, let's create it
-            return $this->pasaiaLdapSrv->createDbUserFromLdapData($credentials['_username']);
+            return $this->pasaiaLdapSrv->createDbUserFromLdapData($credentials[ '_username' ]);
         }
 
         // The User exists in the database, let's update it's data
-        return $this->pasaiaLdapSrv->updateDbUserDataFromLdapByUsername($credentials['_username']);
+        return $this->pasaiaLdapSrv->updateDbUserDataFromLdapByUsername($credentials[ '_username' ]);
     }
 
     public function checkCredentials($credentials, UserInterface $user): bool
     {
-        $bbn = $this->pasaiaLdapSrv->checkCredentials($credentials['_username'], $credentials['_password']);
+        $bbn = $this->pasaiaLdapSrv->checkCredentials($credentials[ '_username' ], $credentials[ '_password' ]);
 
-        return  $bbn;
+        return $bbn;
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-
-        if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
-            return new RedirectResponse($targetPath);
-        }
-
-        return new RedirectResponse($this->router->generate('homepage'));
+//        dump("kkk");
+//        if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
+//            return new RedirectResponse($targetPath);
+//        }
+//        dump( 'hemen' );
+        return new RedirectResponse($this->router->generate('egoiliarra_index'));
     }
 
     protected function getLoginUrl(): string

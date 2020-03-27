@@ -3,14 +3,24 @@
 {% block title %}Barrutia index{% endblock %}
 
 {% block body %}
-    <h1>Barrutia index</h1>
+    <div class="row">
+        <div class="col-md-10">
+            <h1>Barrutia mantenimendua</h1>
+        </div>
+        <div class="col-md-2 text-right">
+            <a class="btn btn-primary" href="{{ path('barrutia_new') }}"><i class="fas fa-plus-square"></i> Barruti berria</a>
+        </div>
+    </div>
 
-    <table class="table">
+
+    <div class="row">&nbsp;</div>
+
+    <table class="table table-striped table-hover">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>Barrutia</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -19,8 +29,14 @@
                 <td>{{ barrutium.id }}</td>
                 <td>{{ barrutium.name }}</td>
                 <td>
-                    <a href="{{ path('barrutia_show', {'id': barrutium.id}) }}">show</a>
-                    <a href="{{ path('barrutia_edit', {'id': barrutium.id}) }}">edit</a>
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a class="btn btn-sm btn-outline-secondary" href="{{ path('barrutia_edit', {'id': barrutium.id}) }}"><i class="fas fa-edit"></i> Aldatu</a>
+                        </li>
+                        <li class="list-inline-item">
+                            {% include('barrutia/_delete_form.html.twig') %}
+                        </li>
+                    </ul>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +47,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('barrutia_new') }}">Create new</a>
+
 {% endblock %}

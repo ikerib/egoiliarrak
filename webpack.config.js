@@ -10,6 +10,7 @@ Encore
 
     .addEntry('jsApp', './assets/js/app.js')
     .addStyleEntry('cssGlobal', './assets/css/global.scss')
+    .addStyleEntry('cssApp', './assets/css/app.scss')
 
     .splitEntryChunks()
     .enableSingleRuntimeChunk()

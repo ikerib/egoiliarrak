@@ -6,13 +6,14 @@ use App\Entity\Egoiliarra;
 use App\Form\EgoiliarraSearchFormType;
 use App\Form\EgoiliarraType;
 use App\Repository\EgoiliarraRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/egoiliarra")
+ * @Route("/")
  */
 class EgoiliarraController extends AbstractController
 {
@@ -21,9 +22,11 @@ class EgoiliarraController extends AbstractController
      * @param Request              $request
      * @param EgoiliarraRepository $egoiliarraRepository
      *
+     * @param PaginatorInterface   $paginator
+     *
      * @return Response
      */
-    public function index(Request $request, EgoiliarraRepository $egoiliarraRepository): Response
+    public function index(Request $request, EgoiliarraRepository $egoiliarraRepository, PaginatorInterface $paginator): Response
     {
         $egoiliarrak = null;
 
@@ -34,15 +37,22 @@ class EgoiliarraController extends AbstractController
 
         $searchForm->handleRequest($request);
 
-        $egoiliarrak = $egoiliarraRepository->findAll();
+
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
             $data = $searchForm->getData();
             $egoiliarrak =$egoiliarraRepository->search($data);
+        } else {
+            $egoiliarrak = $egoiliarraRepository->search(null);
         }
 
+        $pagination = $paginator->paginate(
+            $egoiliarrak,
+            $request->query->getInt('page', 1), /*page number*/
+            10
+        );
 
         return $this->render('egoiliarra/index.html.twig', [
-            'egoiliarras' => $egoiliarrak,
+            'egoiliarras' => $pagination,
             'searchForm' => $searchForm->createView(),
 
         ]);

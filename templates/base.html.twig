@@ -10,6 +10,7 @@
     <link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
     {% block stylesheets %}
         {{ encore_entry_link_tags('cssGlobal') }}
+        {{ encore_entry_link_tags('cssApp') }}
     {% endblock %}
 </head>
 <body class="{% block bodyClass %}{% endblock %}">
